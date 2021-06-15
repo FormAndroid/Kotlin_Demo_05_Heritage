@@ -22,7 +22,27 @@ class Student(firstname: String, lastname: String, bithdate: LocalDate, email: S
         println("$fullname assite au cours de ${course.name}")
     }
 
+    fun sendEmail(teacher: Teacher, subject: String) {
+        println("$fullname envoit un courriel")
+        teacher.receiveEmail(this, subject)
+    }
+
     fun guindailler() {
         println("$firstname $lastname guindaille !")
+    }
+
+    // Re-définition d'une méthode via le mot clef "override"
+    //  -> Necessite que la méthode soit "open"
+    override fun sleep(nbHour: Int) {
+        val goGuindaille: Boolean = (0 until 3).random() == 0
+
+        val nbSleepHour = if (goGuindaille) {
+            guindailler()
+            (0 until nbHour).random() // Valeur quand il guindaille
+        } else {
+             nbHour                   // Valeur par defaut
+        }
+
+        super.sleep(nbSleepHour)
     }
 }

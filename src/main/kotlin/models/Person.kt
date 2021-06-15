@@ -5,7 +5,7 @@ import java.time.Period
 
 open class Person(val firstname: String, val lastname: String, val birthdate: LocalDate, email: String?) {
 
-    val fullname: String
+    open val fullname: String
         get() = "$firstname $lastname"
 
     val age: Int
@@ -31,7 +31,7 @@ open class Person(val firstname: String, val lastname: String, val birthdate: Lo
         println("$fullname mange $food")
     }
 
-    fun sleep(nbHour: Int = 8) {
+    open fun sleep(nbHour: Int = 8) {
         if (nbHour == 0) {
             println("$fullname a fait une nuit blanche!")
         } else {
